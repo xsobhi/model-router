@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "model-router",
+  "description": "Route each sub-agent task to the cheapest model that can do it well.",
+  "owner": {
+    "name": "Sobhi Ashraf Al-Firani",
+    "url": "https://github.com/xsobhi"
+  },
+  "plugins": [
+    {
+      "name": "model-router",
+      "description": "Sub-agents get haiku, sonnet or opus by task difficulty, so helpers stop burning your strongest model.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

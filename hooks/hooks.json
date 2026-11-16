@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"process.stdout.write(JSON.stringify({hookSpecificOutput:{hookEventName:'SessionStart',additionalContext:require('fs').readFileSync(process.env.CLAUDE_PLUGIN_ROOT+'/policy.md','utf8')}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"process.stdout.write(JSON.stringify({hookSpecificOutput:{hookEventName:'SubagentStart',additionalContext:require('fs').readFileSync(process.env.CLAUDE_PLUGIN_ROOT+'/policy.md','utf8')}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

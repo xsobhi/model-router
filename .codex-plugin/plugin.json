@@ -1,0 +1,24 @@
+{
+  "name": "model-router",
+  "version": "1.0.0",
+  "description": "Cut usage by sending each sub-agent task to the cheapest model that can do it well: the smallest model for searching and reading, the standard one for routine work, the strongest only for hard or risky work.",
+  "author": {
+    "name": "Sobhi Ashraf Al-Firani",
+    "url": "https://github.com/xsobhi"
+  },
+  "homepage": "https://github.com/xsobhi/model-router",
+  "repository": "https://github.com/xsobhi/model-router",
+  "license": "MIT",
+  "keywords": ["model-routing", "subagents", "usage-limits"],
+  "skills": "./skills/",
+  "hooks": "./hooks/codex-hooks.json",
+  "interface": {
+    "displayName": "Model Router",
+    "shortDescription": "Cheapest model that can do each sub-agent task",
+    "longDescription": "Tells Codex to set a model and reasoning effort on each sub-agent by task difficulty, so searching and reading stay cheap and the strongest model is kept for hard or risky work.",
+    "developerName": "Sobhi Ashraf Al-Firani",
+    "category": "Productivity",
+    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "websiteURL": "https://github.com/xsobhi/model-router"
+  }
+}

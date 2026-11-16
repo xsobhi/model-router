@@ -1,0 +1,13 @@
+{
+  "name": "model-router",
+  "version": "1.0.0",
+  "description": "Cut usage by sending each sub-agent task to the cheapest model that can do it well: haiku for searching and reading, sonnet for routine work, opus only for hard or risky work.",
+  "author": {
+    "name": "Sobhi Ashraf Al-Firani",
+    "url": "https://github.com/xsobhi"
+  },
+  "homepage": "https://github.com/xsobhi/model-router",
+  "repository": "https://github.com/xsobhi/model-router",
+  "license": "MIT",
+  "keywords": ["model-routing", "subagents", "usage-limits", "haiku", "sonnet", "opus"]
+}
