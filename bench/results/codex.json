@@ -1,0 +1,328 @@
+[
+ {
+  "arm": "A",
+  "scenario": "delegate",
+  "wallS": 92.596,
+  "threads": [
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default"
+    ],
+    "usage": {
+     "input_tokens": 444438,
+     "cached_input_tokens": 405888,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 990,
+     "reasoning_output_tokens": 13,
+     "total_tokens": 445428
+    },
+    "spawns": [
+     {
+      "name": "spawn_agent",
+      "task_name": "cart",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "tax",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "orders",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "inventory",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "inventory",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "report",
+      "model": null,
+      "reasoning_effort": null
+     }
+    ]
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 143640,
+     "cached_input_tokens": 133120,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 395,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 144035
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 143098,
+     "cached_input_tokens": 139648,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 425,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 143523
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 102447,
+     "cached_input_tokens": 89344,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 299,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 102746
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 79692,
+     "cached_input_tokens": 70272,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 207,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 79899
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:01:09.306Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 153659,
+     "cached_input_tokens": 143744,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 827,
+     "reasoning_output_tokens": 11,
+     "total_tokens": 154486
+    },
+    "spawns": []
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "arm": "B",
+  "scenario": "delegate",
+  "wallS": 95.948,
+  "threads": [
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:02:42.793Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default"
+    ],
+    "usage": {
+     "input_tokens": 446243,
+     "cached_input_tokens": 415744,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 1387,
+     "reasoning_output_tokens": 56,
+     "total_tokens": 447630
+    },
+    "spawns": [
+     {
+      "name": "spawn_agent",
+      "task_name": "cart",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "tax",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "orders",
+      "model": null,
+      "reasoning_effort": null
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "inventory",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low"
+     },
+     {
+      "name": "spawn_agent",
+      "task_name": "report",
+      "model": "gpt-6-luna",
+      "reasoning_effort": "low"
+     }
+    ]
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:02:42.793Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 105559,
+     "cached_input_tokens": 85888,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 267,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 105826
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:02:42.793Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 105131,
+     "cached_input_tokens": 94848,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 296,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 105427
+    },
+    "spawns": []
+   },
+   {
+    "source": "\"exec\"",
+    "started": "2026-11-17T00:02:42.793Z",
+    "models": [
+     "gpt-6.1-sol"
+    ],
+    "efforts": [
+     "default",
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 106354,
+     "cached_input_tokens": 72448,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 331,
+     "reasoning_output_tokens": 0,
+     "total_tokens": 106685
+    },
+    "spawns": []
+   },
+   {
+    "source": "{\"subagent\":{\"thread_spawn\":{\"parent_thread_id\":\"01a1e6d0-22d6-7e91-a081-e0a4d74bbeb6\",\"depth\":1,\"agent_path\":\"/root/inventory\",\"agent_nickname\":\"Lovelace\",\"agent_role\":null}}}",
+    "started": "2026-11-17T00:03:12.000Z",
+    "models": [
+     "gpt-6-luna"
+    ],
+    "efforts": [
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 194074,
+     "cached_input_tokens": 172288,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 805,
+     "reasoning_output_tokens": 133,
+     "total_tokens": 194879
+    },
+    "spawns": []
+   },
+   {
+    "source": "{\"subagent\":{\"thread_spawn\":{\"parent_thread_id\":\"01a1e6d0-22d6-7e91-a081-e0a4d74bbeb6\",\"depth\":1,\"agent_path\":\"/root/report\",\"agent_nickname\":\"Ptolemy\",\"agent_role\":null}}}",
+    "started": "2026-11-17T00:03:16.516Z",
+    "models": [
+     "gpt-6-luna"
+    ],
+    "efforts": [
+     "low"
+    ],
+    "usage": {
+     "input_tokens": 279759,
+     "cached_input_tokens": 267648,
+     "cache_write_input_tokens": 0,
+     "output_tokens": 1822,
+     "reasoning_output_tokens": 260,
+     "total_tokens": 281581
+    },
+    "spawns": []
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ }
+]
