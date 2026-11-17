@@ -1,6 +1,6 @@
 {
   "name": "model-router",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Cut usage by sending each sub-agent task to the cheapest model that can do it well: the smallest model for searching and reading, the standard one for routine work, the strongest only for hard or risky work.",
   "author": {
     "name": "Sobhi Ashraf Al-Firani",
