@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Benchmark: the same task with and without the model-router plugin, on Claude Code.
-// Usage: node bench/run.mjs [--scenario natural|delegate] [--runs 3] [--model opus] [--budget 5] [--cap 25] [--out DIR]
+// Usage: node bench/run.mjs [--scenario natural|delegate] [--arms A,B] [--tag LABEL] [--runs 3] [--model opus] [--budget 5] [--cap 25] [--out DIR]
 //        node bench/run.mjs --summarize bench/results/claude.json
 // Runs are interleaved (A1 B1 A2 B2 ...). --budget is passed to claude as --max-budget-usd for each run; the script
 // stops before a run if total spend so far (results.json in --out, so repeated invocations add up) plus --budget
@@ -142,6 +142,8 @@ async function benchmark() {
   const runs = Number(arg('runs', 3)); const model = arg('model', 'opus'); const scenario = arg('scenario', 'natural');
   if (!PROMPTS[scenario]) throw new Error(`scenario must be one of ${Object.keys(PROMPTS)}`);
   const budget = Number(arg('budget', 5)); const cap = Number(arg('cap', 25));
+  const arms = arg('arms', 'A,B').split(','); const tag = arg('tag', ''); // --arms B reruns only the plugin arm; --tag labels the plugin version
+
   const outDir = path.resolve(arg('out', path.join(os.tmpdir(), 'mr-bench-results')));
   fs.mkdirSync(outDir, { recursive: true });
   const resultsFile = path.join(outDir, 'results.json');
@@ -153,7 +155,7 @@ async function benchmark() {
   process.on('SIGINT', () => { bye(); process.exit(130); });
   try {
     for (let i = 1; i <= runs; i++) {
-      for (const arm of ['A', 'B']) { // interleaved so cache and time-of-day effects hit both arms alike
+      for (const arm of arms) { // interleaved so cache and time-of-day effects hit both arms alike
         if (spent + budget > cap) { console.log(`Stopping: spent $${fmt(spent)} and the next run could take $${budget}; cap is $${cap}.`); return; }
         console.log(`run ${scenario} ${arm}${i} ...`);
         const cfgs = makeConfig(arm); cleanup.push(cfgs.home);
@@ -164,7 +166,7 @@ async function benchmark() {
         const proc = await runClaude(cfgs, workdir, { model, budget, maxTurns: 40, outFile, prompt: PROMPTS[scenario] });
         const wallS = (Date.now() - t0) / 1000;
         const parsed = parseStream(outFile);
-        const rec = { scenario, arm, run: i, model, wallS, exit: proc.code ?? proc.signal, stderr: proc.err, ...parsed, subagents: readSubagents(cfgs.cfg), ...check(workdir) };
+        const rec = { scenario, tag, arm, run: i, model, wallS, exit: proc.code ?? proc.signal, stderr: proc.err, ...parsed, subagents: readSubagents(cfgs.cfg), ...check(workdir) };
         all.push(rec); spent += rec.costUsd;
         fs.writeFileSync(resultsFile, JSON.stringify(all, null, 2));
         fs.rmSync(cfgs.home, { recursive: true, force: true });
@@ -175,7 +177,7 @@ async function benchmark() {
 }
 
 function summarize(file) {
-  const all = JSON.parse(fs.readFileSync(file, 'utf8')).map((r) => ({ scenario: 'natural', ...r }));
+  const all = JSON.parse(fs.readFileSync(file, 'utf8')).map((r) => ({ scenario: 'natural', ...r })).map((r) => ({ ...r, scenario: r.tag ? `${r.scenario} (${r.tag})` : r.scenario }));
   const stat = (xs) => `${fmt(mean(xs))} (${fmt(Math.min(...xs))} to ${fmt(Math.max(...xs))})`;
   const split = (r, side, re) => Object.entries(r.tokens).filter(([k]) => k.startsWith(side + '|') && re.test(k)).reduce((a, [, t]) => a + t.input + t.output + t.cacheRead + t.cacheWrite, 0);
   const costOf = (r, re) => Object.entries(r.modelUsage).filter(([k]) => re.test(k)).reduce((a, [, v]) => a + v.costUSD, 0);

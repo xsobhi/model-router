@@ -1,6 +1,6 @@
 ---
 name: scout
-description: Read-only searcher on haiku. Use it to find code, read files, logs and web pages, and summarise what it finds. Never for edits or design decisions.
+description: Read-only searcher on haiku, for delegation you would do anyway: find code, read files, logs and web pages, and summarise. Not a reason to delegate small tasks. Never for edits or design decisions.
 model: haiku
 effort: low
 tools: Read, Grep, Glob, WebFetch, WebSearch

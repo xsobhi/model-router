@@ -1,6 +1,6 @@
 ---
 name: builder
-description: Implementer on sonnet for routine, well-specified work: code changes with a clear plan, tests, refactors, docs, builds. Not for stubborn bugs, architecture or security-sensitive changes.
+description: Implementer on sonnet for routine, well-specified work you are already delegating: code changes with a clear plan, tests, refactors, docs, builds. Not a reason to delegate small tasks. Not for stubborn bugs, architecture or security-sensitive changes.
 model: sonnet
 effort: medium
 ---

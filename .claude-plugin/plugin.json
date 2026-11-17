@@ -1,6 +1,6 @@
 {
   "name": "model-router",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Cut usage by sending each sub-agent task to the cheapest model that can do it well: haiku for searching and reading, sonnet for routine work, opus only for hard or risky work.",
   "author": {
     "name": "Sobhi Ashraf Al-Firani",

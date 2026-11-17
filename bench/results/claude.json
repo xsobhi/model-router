@@ -1937,5 +1937,239 @@
   "testsPass": 45,
   "testsFail": 0,
   "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1",
+  "arm": "B",
+  "run": 1,
+  "model": "opus",
+  "wallS": 19.806,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.23785,
+  "apiMs": 15133,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1577,
+    "cacheReadInputTokens": 96910,
+    "cacheCreationInputTokens": 23362,
+    "webSearchRequests": 0,
+    "costUSD": 0.23785,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 254,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 23362,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 28,
+    "cacheRead": 96910,
+    "cacheWrite": 23362,
+    "calls": 4
+   }
+  },
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1",
+  "arm": "B",
+  "run": 2,
+  "model": "opus",
+  "wallS": 20.142,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.2245654,
+  "apiMs": 14891,
+  "resultTurns": 5,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 10,
+    "outputTokens": 1598,
+    "cacheReadInputTokens": 124827,
+    "cacheCreationInputTokens": 20950,
+    "webSearchRequests": 0,
+    "costUSD": 0.2245654,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 181,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 20950,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 10,
+    "output": 83,
+    "cacheRead": 124827,
+    "cacheWrite": 20950,
+    "calls": 5
+   }
+  },
+  "mainCalls": 5,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1",
+  "arm": "B",
+  "run": 3,
+  "model": "opus",
+  "wallS": 19.37,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.2399212,
+  "apiMs": 14703,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1633,
+    "cacheReadInputTokens": 96906,
+    "cacheCreationInputTokens": 23481,
+    "webSearchRequests": 0,
+    "costUSD": 0.2399212,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 273,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 23481,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 17,
+    "cacheRead": 96906,
+    "cacheWrite": 23481,
+    "calls": 4
+   }
+  },
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
  }
 ]

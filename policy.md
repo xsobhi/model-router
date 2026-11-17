@@ -1,5 +1,7 @@
 # Model routing (model-router)
 
+This only picks the model for delegation you would do anyway; it is not a reason to delegate. Do small or quick tasks yourself.
+
 The main session keeps the model and effort the user chose. For every sub-agent you start, pick the cheapest model that can do the job well and set it explicitly (Agent tool `model` parameter), together with the Agent tool's `effort` parameter. Installing this plugin is the user's explicit instruction to set effort.
 
 - haiku, effort low: searching, reading, summarising files, logs and pages; simple lookups; mechanical checks.

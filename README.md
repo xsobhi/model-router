@@ -4,7 +4,7 @@ A small plugin for Claude Code and Codex that sends each sub-agent task to the c
 
 Usage limits get used up fast when every helper runs on your strongest model. Searching a repo or summarising a log does not need it. This plugin tells the main agent, at the start of every session and every sub-agent, which model and effort to pick for which kind of task. The main session keeps whatever model and effort you chose.
 
-In a benchmark where the main agent delegates a lot, it cut the cost of the same task by about half (see [Benchmark](#benchmark)). When the main agent does not delegate, there is nothing for it to save.
+In a benchmark where the main agent delegates a lot, it cut the cost of the same task by about half (see [Benchmark](#benchmark)). When the main agent does not delegate, there is nothing for it to save, and version 1.1.0 turned out to nudge it into delegating small tasks. 1.1.1 adds a line against that (see the "natural" rows).
 
 It is a plain-text policy plus two small agents. There is no proxy, no server and no dependency except `node` on PATH.
 
@@ -89,7 +89,7 @@ Codex's plugin docs do not list agent roles as something a plugin can bundle, so
 
 ## Customise
 
-Fork the repo and edit `policy.md` (Claude Code) or `policy-codex.md` (Codex). Both are about 270 tokens (1,069 and 1,096 bytes); keep them short, because they are paid for on every session and every sub-agent.
+Fork the repo and edit `policy.md` (Claude Code) or `policy-codex.md` (Codex). `policy.md` is about 300 tokens (1,198 bytes) and `policy-codex.md` about 275 (1,096 bytes); keep them short, because they are paid for on every session and every sub-agent.
 
 - Change which model a tier uses, or add a tier, by editing the bullets.
 - Codex: the "tier map" line at the bottom of `policy-codex.md` can pin exact model ids instead of `auto`.
@@ -109,10 +109,10 @@ or `claude plugin uninstall model-router@model-router`, then `claude plugin mark
 
 Measured on Claude Code 2.1.326 with `claude plugin details model-router` in a throwaway config dir:
 
-- Always on: about 190 tokens (the skill and the two agent descriptions). Version 1.0.0 measured about 135; the tool's estimate rose after this release's changes (the `effort` lines and the longer `policy.md`); I did not break it down further.
-- `claude plugin details` marks the hooks as "harness-only, no model context cost". That is true for running them, but what they print does enter the context: `policy.md` is 1,069 bytes, roughly 270 tokens, once per session and once per sub-agent started. `policy-codex.md` is 1,096 bytes, roughly 275 tokens. Those two figures are my estimate from byte counts, not a tokenizer measurement.
+- Always on: about 165 tokens in 1.1.1 (the skill and the two agent descriptions). That estimate is rough: the same tool gave about 135 for 1.0.0 and about 190 for 1.1.0, with nearly the same component text. Read it as "a couple of hundred tokens".
+- `claude plugin details` marks the hooks as "harness-only, no model context cost". That is true for running them, but what they print does enter the context: `policy.md` is 1,198 bytes, roughly 300 tokens, once per session and once per sub-agent started. `policy-codex.md` is 1,096 bytes, roughly 275 tokens. Those two figures are my estimate from byte counts, not a tokenizer measurement.
 
-So the plugin costs a few hundred tokens up front and about 270 more per sub-agent. It pays for itself only if the routing moves real work to cheaper models.
+So the plugin costs a few hundred tokens up front and about 300 more per sub-agent. It pays for itself only if the routing moves real work to cheaper models.
 
 ## Benchmark
 
@@ -120,7 +120,7 @@ Small and honest: 12 Claude Code runs, 3 per arm and scenario, plus one Codex pa
 
 ### Setup
 
-- Arm A has no plugin. Arm B has this plugin (1.1.0 contents), installed from the local path with `claude plugin marketplace add` and `claude plugin install`. Both use `--model opus` at default effort (medium in 2.1.326).
+- Arm A has no plugin. Arm B has this plugin, installed from the local path with `claude plugin marketplace add` and `claude plugin install`. The delegate runs and the first natural runs used the 1.1.0 text; the natural rerun used 1.1.1 (see below). Both use `--model opus` at default effort (medium in 2.1.326).
 - Every run gets its own throwaway `CLAUDE_CONFIG_DIR` and `HOME`, and an environment with no `CLAUDE_*` variables (so no `CLAUDE_CODE_SUBAGENT_MODEL`). Only the OAuth credentials file is copied in, with mode 600, and the directory is deleted afterwards. Neither arm sees my real `~/.claude`, its `CLAUDE.md` (which already has a routing rule), other plugins or skills. Runs alternate A, B, A, B so cache and time of day hit both arms alike.
 - Command per run: `claude -p <prompt> --model opus --max-turns 40 --max-budget-usd 5 --permission-mode bypassPermissions --output-format stream-json --verbose`, in a fresh copy of the fixture.
 - Fixture (`bench/fixture`, "shopcalc"): a small Node package with 12 source files (about 200 lines), 8 test files and 45 tests, no dependencies. 13 tests fail at the start because of two seeded one-line bugs (a cart that replaces a line's quantity instead of adding to it; a tax-exemption check that uses `in` on an array) plus one small feature (`topSkus` in `src/report.js`, specified in `docs/FEATURE.md`, tests already written).
@@ -168,17 +168,19 @@ In arm A all 7 sub-agents (5 Explore, 2 general-purpose) inherited opus at the d
 
 ### Results: natural (3 runs per arm)
 
-| | A: no plugin | B: model-router | Change |
-|---|---|---|---|
-| Runs passed | 3/3 | 3/3 | |
-| Cost, USD | 0.24 (0.21 to 0.26) | 0.31 (0.25 to 0.35) | +31% |
-| Wall time, s | 19 (17 to 21) | 38 (18 to 48) | +99% |
-| Sub-agents started | 0 (0 to 0) | 2.7 (0 to 5) | |
-| Main agent API calls | 4 (4 to 4) | 8.3 (4 to 11) | |
+| | A: no plugin | B: 1.1.0 policy | Change vs A | B: 1.1.1 policy (rerun) | Change vs A |
+|---|---|---|---|---|---|
+| Runs passed | 3/3 | 3/3 | | 3/3 | |
+| Cost, USD | 0.24 (0.21 to 0.26) | 0.31 (0.25 to 0.35) | +31% | 0.23 (0.22 to 0.24) | -1% |
+| Wall time, s | 19 (17 to 21) | 38 (18 to 48) | +99% | 20 (19 to 20) | +4% |
+| Sub-agents started | 0 (0 to 0) | 2.7 (0 to 5) | | 0 (0 to 0) | |
+| Main agent API calls | 4 (4 to 4) | 8.3 (4 to 11) | | 4.3 (4 to 5) | |
 
-This is the finding to take away: **when the prompt only allowed delegation, the baseline never delegated** (0 of 3). The opus main agent read the 200-line source in two commands and said that sub-agents "would cost more than they'd save here". With the plugin it started scouts in 2 of 3 runs and finished more slowly and more expensively, because every sub-agent that finishes wakes the main agent for another call, and on a repo this small that overhead is bigger than the haiku work it saves. In the one plugin run that did not delegate, the cost was $0.25 against $0.21 to $0.26 for the baseline, so the plugin's own context overhead is within noise at this size. With 3 runs I cannot say whether the plugin's text makes the main agent delegate more or whether that was chance.
+This is the finding to take away: **when the prompt only allowed delegation, the baseline never delegated** (0 of 3). The opus main agent read the 200-line source in two commands and said that sub-agents "would cost more than they'd save here". With the 1.1.0 plugin it started scouts in 2 of 3 runs and finished more slowly and more expensively, because every sub-agent that finishes wakes the main agent for another call, and on a repo this small that overhead is bigger than the haiku work it saves. In the one 1.1.0 run that did not delegate, the cost was $0.25 against $0.21 to $0.26 for the baseline, so the plugin's own context overhead is within noise at this size.
 
-The plugin saves money on delegated work only. On a task small enough that the main agent does it alone, it saves nothing; if it tips the agent into delegating, it can cost more.
+I read that as the plugin text nudging delegation, so 1.1.1 adds one line at the top of `policy.md` ("This only picks the model for delegation you would do anyway; it is not a reason to delegate. Do small or quick tasks yourself.") and the same idea in the two agent descriptions. Rerun of arm B only, with the same fixture, prompt and flags except `--max-budget-usd 1` instead of 5 (a spending cap for this rerun; no run came near it): the main agent did the task itself in 3 of 3 runs, at baseline cost and speed. Arm A was not rerun, since the baseline did not change. Limits: 3 runs, and going from 2 of 3 runs delegating to 0 of 3 is suggestive, not proof that the line is the cause. I did not rerun the delegate scenario with 1.1.1, so the -54% above is a 1.1.0 number; the new line may make the main agent delegate less there too, and I have not measured that.
+
+The plugin saves money on delegated work only. On a task small enough that the main agent does it alone, it saves nothing; with 1.1.0 it could tip the agent into delegating and cost more.
 
 ### Every run
 
@@ -190,6 +192,9 @@ The plugin saves money on delegated work only. On a task small enough that the m
 | natural | 2 | B | 45/45 | $0.35 | 48 s | 5 x scout haiku/low |
 | natural | 3 | A | 45/45 | $0.23 | 19 s | none |
 | natural | 3 | B | 45/45 | $0.25 | 18 s | none |
+| natural (v1.1.1 policy) | 1 | B | 45/45 | $0.24 | 20 s | none |
+| natural (v1.1.1 policy) | 2 | B | 45/45 | $0.22 | 20 s | none |
+| natural (v1.1.1 policy) | 3 | B | 45/45 | $0.24 | 19 s | none |
 | delegate | 1 | A | 45/45 | $1.25 | 81 s | 5 Explore + 2 general-purpose, all opus at default effort |
 | delegate | 1 | B | 45/45 | $0.60 | 66 s | 5 x scout haiku/low, 2 x builder sonnet/medium |
 | delegate | 2 | A | 45/45 | $1.23 | 74 s | same as run 1 |
@@ -213,7 +218,7 @@ One run per arm with `codex exec --json` (codex-cli 0.162.1), each in a throwawa
 
 With the plugin, the main agent set `model: gpt-6-luna, reasoning_effort: low` on 2 of its 5 spawn calls and left the other 3 on the default. Total tokens went up 16%, because the smaller model used more of them. Whether that is cheaper depends on prices and subscription accounting I cannot see, so I draw no conclusion from one pair. Two caveats on how it ran: the plugin's hooks were run with `--dangerously-bypass-hook-trust` (a fresh `CODEX_HOME` trusts nothing; passed to both arms), and with `--dangerously-bypass-approvals-and-sandbox` because the Codex sandbox (bwrap) would not start on my VM (my first attempt with it on failed in both arms). Both ran in a throwaway copy of the fixture.
 
-The Codex plugin in that run was the copy installed at version 1.0.0; `policy-codex.md` and the Codex hooks are unchanged in 1.1.0. Data: `bench/results/codex.json`.
+The Codex plugin in that run was the copy installed at version 1.0.0; `policy-codex.md` and the Codex hooks are unchanged in 1.1.0 and 1.1.1 (it already says the plugin never asks Codex to delegate more). Data: `bench/results/codex.json`.
 
 ### Caveats
 
@@ -227,22 +232,23 @@ The Codex plugin in that run was the copy installed at version 1.0.0; `policy-co
 
 ### What the benchmark cost
 
-The 12 Claude runs cost $6.98 in total: arm A $4.37 (natural $0.71, delegate $3.66) and arm B $2.61 (natural $0.93, delegate $1.68). Manual checks before the benchmark (a few smoke sessions, the frontmatter tests, the `CLAUDE_CODE_SUBAGENT_MODEL` tests) added about $0.75, so about $7.7 all in, well under the $25 limit I set. The Codex pair used about 2.3M tokens and has no dollar figure.
+The 12 first Claude runs cost $6.98: arm A $4.37 (natural $0.71, delegate $3.66) and arm B with the 1.1.0 text $2.61 (natural $0.93, delegate $1.68). The 1.1.1 natural rerun added 3 runs for $0.70 (limit I set for it: $3). That is $7.68 for the 15 runs. Manual checks before the benchmark (a few smoke sessions, the frontmatter tests, the `CLAUDE_CODE_SUBAGENT_MODEL` tests) added about $0.75, so about $8.4 all in, well under the $25 limit I set for the first batch. The Codex pair used about 2.3M tokens and has no dollar figure.
 
 ### Run it yourself
 
 ```
 node bench/run.mjs --scenario natural  --runs 3 --out /tmp/mr-bench
 node bench/run.mjs --scenario delegate --runs 3 --out /tmp/mr-bench
+node bench/run.mjs --scenario natural --arms B --tag v1.1.1 --runs 3 --budget 1 --cap 3 --out /tmp/mr-bench-v111   # plugin arm only
 node bench/run.mjs --summarize /tmp/mr-bench/results.json
 node bench/codex.mjs --scenario delegate        # optional, Codex
 ```
 
-It needs `claude` (logged in; only `~/.claude/.credentials.json` is copied, set `CLAUDE_CREDENTIALS` to use another file), `node`, and about $7 of API-equivalent usage. `--budget` caps each run (default $5) and `--cap` stops the whole benchmark (default $25). Nothing from your real config is used and the throwaway directories are deleted at the end. The scripts never write credentials anywhere else.
+It needs `claude` (logged in; only `~/.claude/.credentials.json` is copied, set `CLAUDE_CREDENTIALS` to use another file), `node`, and about $7 of API-equivalent usage for the first two commands. `--budget` caps each run (default $5) and `--cap` stops the whole benchmark (default $25). Nothing from your real config is used and the throwaway directories are deleted at the end. The scripts never write credentials anywhere else.
 
 ## Honest notes
 
-- The saving is measured on one tiny fixture and 3 runs per arm (see [Benchmark](#benchmark)): about half the cost when the main agent delegates a lot, and no saving, or a loss, when it does not. I will not extrapolate a percentage to your work. It depends on how much of your work goes to sub-agents and how much of that is searching and reading.
+- The saving is measured on one tiny fixture and 3 runs per arm (see [Benchmark](#benchmark)): about half the cost when the main agent delegates a lot, and no saving when it does not. Version 1.1.0 also cost more on a small task by tipping the agent into delegating; 1.1.1 added a line against that and 3 of 3 reruns then matched the baseline. I will not extrapolate a percentage to your work. It depends on how much of your work goes to sub-agents and how much of that is searching and reading.
 - The policy is an instruction, not enforcement. Nothing blocks a call that picks the wrong model. On Claude Code the main agent followed it for all 29 sub-agents it started in the plugin arm; on Codex it followed it on 2 of 5.
 - The `effort:` agent frontmatter field is undocumented (see [Effort on Claude Code](#effort-on-claude-code)).
 - Tested: `claude plugin validate . --strict` (passes; its only warning is that the plugin has no icon), a local install into a throwaway config dir with `claude plugin details`, the hook commands run by hand (valid hook-output JSON, same text as the policy files), real `claude -p` sessions whose transcripts show the Agent tool calls and the models and efforts that ran, and a Codex local install plus one Codex session. Linux only. The hooks should work on macOS and Windows, since they only use `node` and forward slashes, but I have not run them there.
