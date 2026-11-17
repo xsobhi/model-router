@@ -4,7 +4,7 @@ A small plugin for Claude Code and Codex that sends each sub-agent task to the c
 
 Usage limits get used up fast when every helper runs on your strongest model. Searching a repo or summarising a log does not need it. This plugin tells the main agent, at the start of every session and every sub-agent, which model and effort to pick for which kind of task. The main session keeps whatever model and effort you chose.
 
-In a benchmark where the main agent delegates a lot, it cut the cost of the same task by about half (see [Benchmark](#benchmark)). When the main agent does not delegate, there is nothing for it to save, and version 1.1.0 turned out to nudge it into delegating small tasks. 1.1.1 adds a line against that (see the "natural" rows).
+In a benchmark where the main agent delegates a lot, it cut the same task's price-weighted token usage by 47% and its list-price cost by 58% (version 1.1.1, 3 runs per arm; see [Benchmark](#benchmark)). The plan's weekly usage meter moves in 1% steps and could not resolve a difference that small. When the main agent does not delegate, there is nothing for it to save, and version 1.1.0 turned out to nudge it into delegating small tasks. 1.1.1 adds a line against that (see the "natural" rows).
 
 It is a plain-text policy plus two small agents. There is no proxy, no server and no dependency except `node` on PATH.
 
@@ -149,7 +149,72 @@ Two prompts, same for both arms.
 >
 > Finish with a three-line summary of what was wrong and what changed.
 
-### Results: delegate (3 runs per arm, mean and min to max)
+### Headline: usage-limit consumption (v1.1.1, all four cells re-measured)
+
+Subscription users feel usage limits, not dollars, so this batch of 12 runs (3 per arm and scenario, same fixture, prompts and flags as above, plugin arm on 1.1.1) also reads the plan's usage meter around every run. The earlier 1.1.0 runs were not measured this way.
+
+How plan usage is read (only mechanisms Claude Code itself exposes):
+
+- `claude -p /usage` prints "Current week (all models): N% used". It is a local command: no model call, no tokens. Run in a brand-new config dir it asks the usage endpoint live; in an old dir it can answer from a snapshot minutes old, so every reading uses its own fresh throwaway dir. I read it before each run and 15 s after it.
+- The statusline JSON input has `rate_limits` (documented). I checked it through a real interactive session: it holds only `seven_day.used_percentage`. The stream-json output has `rate_limit_event` messages with the same weekly figure, but they lag the live reading by a run or two, so I only record them.
+- **This account has no five-hour window.** `/usage`, the statusline and the stream events all report only the weekly limit (all models) and a separate weekly one for Fable. So there is no five-hour figure to report. (`unifiedWindows` in the stream contains only `seven_day`.)
+- The meter moves in whole percentage points. Runs were strictly sequential, but other sessions run on the same account (including the one driving this benchmark), so every delta also contains whatever they used meanwhile.
+- A guard stops the benchmark if the weekly limit reaches 97% used (it started at 94%).
+
+Because the points are so coarse, the second usage number is a proxy: **weighted tokens**, which count every token of a run (input, output, cache reads, cache writes) times the model's price relative to opus. The weights come from `total_cost_usd` itself: it implies about $0.10, $1.80 and $3.60 per million input tokens for haiku, sonnet and opus, so haiku : sonnet : opus = 1 : 18 : 36, opus = 1. I fitted those from this benchmark's own runs (haiku exact, sonnet within 0.5%, opus within about 6%); I did not look them up in a price list. Cost in dollars is the finer version of the same idea, because it also prices each token type differently.
+
+Delegate scenario (the prompt asks for sub-agents):
+
+| | A: no plugin | B: model-router 1.1.1 | Change |
+|---|---|---|---|
+| Runs passed | 3/3 | 3/3 | |
+| **Weekly limit, points used** (sum of the 3 runs, from `/usage`) | 0 | 0 | not resolvable |
+| **Weighted tokens**, k opus-equivalent | 854 (784 to 925) | 456 (428 to 499) | **-47%** |
+| Tokens, k, all models, unweighted | 843 | 605 | -28% |
+| Cost, USD | 1.24 (1.14 to 1.32) | 0.53 (0.50 to 0.57) | -58% |
+| Wall time, s | 71 (67 to 73) | 61 (51 to 69) | -14% |
+| Sub-agents | 7.3 (7 to 8), all opus | 7 (7 to 7): 5 haiku/low, 2 sonnet/medium | |
+
+Natural scenario (the prompt only allows delegation):
+
+| | A: no plugin | B: model-router 1.1.1 | Change |
+|---|---|---|---|
+| Runs passed | 3/3 | 3/3 | |
+| **Weekly limit, points used** (sum of the 3 runs) | 0 | +1 | noise |
+| **Weighted tokens**, k opus-equivalent | 119 (113 to 125) | 124 (123 to 124) | +4% |
+| Tokens, k, unweighted | 117 | 122 | +5% |
+| Cost, USD | 0.23 (0.19 to 0.26) | 0.25 (0.24 to 0.25) | +8% |
+| Wall time, s | 19.9 (19.1 to 21.2) | 20.1 (19.4 to 20.9) | +1% |
+| Sub-agents | 0 | 0 | |
+
+What this says:
+
+- When the main agent delegates, the plugin cuts weighted usage by nearly half. The saving is smaller in tokens (-28%) than in weighted tokens or dollars because the work still has to be read; it is just read by cheaper models. All 22 sub-agents in arm A ran opus at the default effort; all 21 in arm B ran the model and effort they were asked for (haiku/low and sonnet/medium).
+- When it does not delegate, which is what 1.1.1 now does on a small task (0 of 3 delegated, and 0 of 3 again in the earlier 1.1.1 rerun), the plugin costs a few percent for its extra context (about 300 tokens of policy plus the agent descriptions). That is small and I would not call it more than that with 3 runs.
+- **The weekly meter could not see any of this.** Over the 12 runs it went from 94% to 95%: one point, and the tick happened during a natural run that cost $0.24, so it is not that run's doing. The 12 runs cost $6.71 list-equivalent, so the true change was between 0 and 2 points, which puts one point at more than about $3.40 of list-price cost on this plan. Individual runs ($0.19 to $1.32) fall below that resolution, and the per-run readings are mostly 0 (`bench/results/claude.json` has all of them). Weighted tokens are the usable usage number here; read the weekly column as "no visible change".
+
+Every run of this batch:
+
+| Scenario | Run | Arm | Weekly limit | Weighted tokens | Cost | Time | Sub-agents (model/effort) |
+|---|---|---|---|---|---|---|---|
+| natural | 1 | A | 94% to 94% | 125k | $0.19 | 21 s | none |
+| natural | 1 | B | 94% to 94% | 124k | $0.25 | 19 s | none |
+| natural | 2 | A | 94% to 94% | 118k | $0.26 | 19 s | none |
+| natural | 2 | B | 94% to 94% | 124k | $0.25 | 21 s | none |
+| natural | 3 | A | 94% to 94% | 113k | $0.24 | 19 s | none |
+| natural | 3 | B | 94% to 95% | 123k | $0.24 | 20 s | none |
+| delegate | 1 | A | 95% to 95% | 854k | $1.25 | 67 s | 5 Explore + 2 general-purpose, opus/default |
+| delegate | 1 | B | 95% to 95% | 499k | $0.57 | 69 s* | 5 scout haiku/low, 2 builder sonnet/medium |
+| delegate | 2 | A | 95% to 95% | 925k | $1.32 | 73 s | 5 Explore + 3 general-purpose, opus/default |
+| delegate | 2 | B | 95% to 95% | 428k | $0.50 | 51 s* | 5 scout haiku/low, 2 builder sonnet/medium |
+| delegate | 3 | A | 95% to 95% | 784k | $1.14 | 72 s | 5 Explore + 2 general-purpose, opus/default |
+| delegate | 3 | B | 95% to 95% | 440k | $0.51 | 62 s | 5 scout haiku/low, 2 builder sonnet/medium |
+
+\* The `claude -p` process finished its work and then never exited (it printed its result and sat idle; one of them for 14 minutes). I stopped it by hand (B1) and with a watchdog (B2). Cost, tokens and test results come from the finished stream and are unaffected; the times are my estimate from the last output (the raw values, 940 s and 177 s, are kept as `wallSRaw` in the data). `bench/run.mjs` now has the same watchdog built in: it stops a run that has been silent for 2 minutes after its result.
+
+The cost-only tables below are the earlier batch, with the 1.1.0 text in arm B (and, for the natural scenario, the 1.1.1 rerun of arm B).
+
+### Results: delegate (plugin 1.1.0, 3 runs per arm, mean and min to max)
 
 | | A: no plugin | B: model-router | Change |
 |---|---|---|---|
@@ -166,7 +231,7 @@ Two prompts, same for both arms.
 
 In arm A all 7 sub-agents (5 Explore, 2 general-purpose) inherited opus at the default effort. In arm B the main agent picked 5 scouts on haiku/low and 2 builders on sonnet/medium, in every run. The opus main agent is still most of the bill; the saving is the sub-agent half moving to cheaper models.
 
-### Results: natural (3 runs per arm)
+### Results: natural (3 runs per arm; 1.1.0 and the 1.1.1 rerun)
 
 | | A: no plugin | B: 1.1.0 policy | Change vs A | B: 1.1.1 policy (rerun) | Change vs A |
 |---|---|---|---|---|---|
@@ -225,14 +290,19 @@ The Codex plugin in that run was the copy installed at version 1.0.0; `policy-co
 - Small n: 3 runs per arm and scenario, one Codex pair. Read the spread as noise-level information, not as a confidence interval.
 - One fixture, and a tiny one (about 200 lines of source). On a large repo the sub-agents would read much more, so I expect more saving from routing, but I did not measure that.
 - The delegate prompt tells the agent to delegate. A real session may delegate more or less than that.
-- Costs are list-price equivalents from `total_cost_usd`. Subscription usage limits are counted differently and the ratios may differ.
+- Costs are list-price equivalents from `total_cost_usd`. Subscription usage limits are counted differently and the ratios may differ. The plan's own meter was too coarse to confirm them (1% steps), and weighted tokens are a proxy for it, not the same quantity: I do not know how the plan weighs cache reads or each model.
+- Plan usage was read on one account with a weekly-only limit; on a plan with a five-hour window you would see that figure as well, and the five-hour meter may be finer.
 - One model family and one Claude Code version. The sub-agent models in arm A were opus because Explore and general-purpose inherit the main model in this setup; with other settings or versions the baseline could already be cheaper.
 - Prompt caching can shift individual runs; the alternating order is there to spread it, not to remove it.
 - The two bugs are easy to find on purpose, so every run passed. This benchmark measures cost, not whether cheaper models fail on harder bugs.
 
 ### What the benchmark cost
 
-The 12 first Claude runs cost $6.98: arm A $4.37 (natural $0.71, delegate $3.66) and arm B with the 1.1.0 text $2.61 (natural $0.93, delegate $1.68). The 1.1.1 natural rerun added 3 runs for $0.70 (limit I set for it: $3). That is $7.68 for the 15 runs. Manual checks before the benchmark (a few smoke sessions, the frontmatter tests, the `CLAUDE_CODE_SUBAGENT_MODEL` tests) added about $0.75, so about $8.4 all in, well under the $25 limit I set for the first batch. The Codex pair used about 2.3M tokens and has no dollar figure.
+- First batch: 12 runs, $6.98 (arm A $4.37, arm B with 1.1.0 text $2.61).
+- 1.1.1 natural rerun of arm B: 3 runs, $0.70.
+- Usage batch: 12 runs, **$6.71 list-equivalent and 4.66M weighted tokens**, which moved the weekly limit from 94% to 95% (at most 2 points, and that includes whatever else was running on the account). No five-hour window exists on this account.
+- All 27 Claude runs: $14.39. Manual checks (smoke sessions, the frontmatter and `CLAUDE_CODE_SUBAGENT_MODEL` tests, the statusline check) added about $0.8, so about $15.2 in list-price terms. On the weekly meter the whole benchmark can have used at most 2 points: the first stream event of the first batch showed 93% and the last reading of the usage batch was 95% (the early stream readings lag and I did not read `/usage` then, so I do not split that between batches).
+- The Codex pair used about 2.3M tokens and has no dollar figure.
 
 ### Run it yourself
 
@@ -240,15 +310,17 @@ The 12 first Claude runs cost $6.98: arm A $4.37 (natural $0.71, delegate $3.66)
 node bench/run.mjs --scenario natural  --runs 3 --out /tmp/mr-bench
 node bench/run.mjs --scenario delegate --runs 3 --out /tmp/mr-bench
 node bench/run.mjs --scenario natural --arms B --tag v1.1.1 --runs 3 --budget 1 --cap 3 --out /tmp/mr-bench-v111   # plugin arm only
+node bench/run.mjs --scenario natural --tag v1.1.1-usage --runs 3 --budget 3 --cap 15 --stop-weekly 97 --out /tmp/mr-bench-usage   # with plan usage readings, A and B
+node bench/run.mjs --scenario delegate --tag v1.1.1-usage --runs 3 --budget 3 --cap 15 --stop-weekly 97 --out /tmp/mr-bench-usage
 node bench/run.mjs --summarize /tmp/mr-bench/results.json
 node bench/codex.mjs --scenario delegate        # optional, Codex
 ```
 
-It needs `claude` (logged in; only `~/.claude/.credentials.json` is copied, set `CLAUDE_CREDENTIALS` to use another file), `node`, and about $7 of API-equivalent usage for the first two commands. `--budget` caps each run (default $5) and `--cap` stops the whole benchmark (default $25). Nothing from your real config is used and the throwaway directories are deleted at the end. The scripts never write credentials anywhere else.
+It needs `claude` (logged in; only `~/.claude/.credentials.json` is copied, set `CLAUDE_CREDENTIALS` to use another file), `node`, and about $7 of API-equivalent usage for the first two commands. `--budget` caps each run (default $5), `--cap` stops the whole benchmark (default $25), `--stop-weekly N` stops it when the weekly limit is N% used, and `--settle` is the wait in seconds before each after-run usage reading (default 15). Every run records the `/usage` readings, so a rerun on your own plan gives you your own numbers; expect to see the weekly meter move by whole points only. Nothing from your real config is used and the throwaway directories are deleted at the end. The scripts never write credentials anywhere else.
 
 ## Honest notes
 
-- The saving is measured on one tiny fixture and 3 runs per arm (see [Benchmark](#benchmark)): about half the cost when the main agent delegates a lot, and no saving when it does not. Version 1.1.0 also cost more on a small task by tipping the agent into delegating; 1.1.1 added a line against that and 3 of 3 reruns then matched the baseline. I will not extrapolate a percentage to your work. It depends on how much of your work goes to sub-agents and how much of that is searching and reading.
+- The saving is measured on one tiny fixture and 3 runs per arm (see [Benchmark](#benchmark)): about half the price-weighted usage and cost when the main agent delegates a lot, and no saving (a few percent extra) when it does not. Version 1.1.0 also cost more on a small task by tipping the agent into delegating; 1.1.1 added a line against that and 3 of 3 reruns then matched the baseline. I will not extrapolate a percentage to your work. It depends on how much of your work goes to sub-agents and how much of that is searching and reading.
 - The policy is an instruction, not enforcement. Nothing blocks a call that picks the wrong model. On Claude Code the main agent followed it for all 29 sub-agents it started in the plugin arm; on Codex it followed it on 2 of 5.
 - The `effort:` agent frontmatter field is undocumented (see [Effort on Claude Code](#effort-on-claude-code)).
 - Tested: `claude plugin validate . --strict` (passes; its only warning is that the plugin has no icon), a local install into a throwaway config dir with `claude plugin details`, the hook commands run by hand (valid hook-output JSON, same text as the policy files), real `claude -p` sessions whose transcripts show the Agent tool calls and the models and efforts that ran, and a Codex local install plus one Codex session. Linux only. The hooks should work on macOS and Windows, since they only use `node` and forward slashes, but I have not run them there.

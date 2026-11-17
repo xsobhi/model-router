@@ -2171,5 +2171,2002 @@
   "testsPass": 45,
   "testsFail": 0,
   "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 94,
+   "before": "2026-11-17T03:59:48.629Z",
+   "after": "2026-11-17T04:00:26.661Z",
+   "fiveHour": null
+  },
+  "run": 1,
+  "model": "opus",
+  "wallS": 21.146,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.19318120000000003,
+  "apiMs": 17001,
+  "resultTurns": 5,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 10,
+    "outputTokens": 1699,
+    "cacheReadInputTokens": 105766,
+    "cacheCreationInputTokens": 17251,
+    "webSearchRequests": 0,
+    "costUSD": 0.19318120000000003,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 324,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 17251,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 10,
+    "output": 123,
+    "cacheRead": 105766,
+    "cacheWrite": 17251,
+    "calls": 5
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 5,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 94,
+   "before": "2026-11-17T04:00:28.714Z",
+   "after": "2026-11-17T04:01:06.113Z",
+   "fiveHour": null
+  },
+  "run": 1,
+  "model": "opus",
+  "wallS": 19.412,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.24827960000000002,
+  "apiMs": 14689,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1581,
+    "cacheReadInputTokens": 98098,
+    "cacheCreationInputTokens": 24626,
+    "webSearchRequests": 0,
+    "costUSD": 0.24827960000000002,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 236,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 24626,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 482,
+    "cacheRead": 98098,
+    "cacheWrite": 24626,
+    "calls": 4
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 94,
+   "before": "2026-11-17T04:01:08.496Z",
+   "after": "2026-11-17T04:01:44.319Z",
+   "fiveHour": null
+  },
+  "run": 2,
+  "model": "opus",
+  "wallS": 19.059,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.2563868,
+  "apiMs": 15614,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1634,
+    "cacheReadInputTokens": 91014,
+    "cacheCreationInputTokens": 25684,
+    "webSearchRequests": 0,
+    "costUSD": 0.2563868,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 355,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 25684,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 27,
+    "cacheRead": 91014,
+    "cacheWrite": 25684,
+    "calls": 4
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 94,
+   "before": "2026-11-17T04:01:46.430Z",
+   "after": "2026-11-17T04:02:25.140Z",
+   "fiveHour": null
+  },
+  "run": 2,
+  "model": "opus",
+  "wallS": 20.865,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.25029759999999995,
+  "apiMs": 16517,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1708,
+    "cacheReadInputTokens": 97768,
+    "cacheCreationInputTokens": 24569,
+    "webSearchRequests": 0,
+    "costUSD": 0.25029759999999995,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 379,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 24569,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 26,
+    "cacheRead": 97768,
+    "cacheWrite": 24569,
+    "calls": 4
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 94,
+   "before": "2026-11-17T04:02:27.203Z",
+   "after": "2026-11-17T04:03:03.591Z",
+   "fiveHour": null
+  },
+  "run": 3,
+  "model": "opus",
+  "wallS": 19.496,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.2350252,
+  "apiMs": 16149,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1761,
+    "cacheReadInputTokens": 88066,
+    "cacheCreationInputTokens": 22770,
+    "webSearchRequests": 0,
+    "costUSD": 0.2350252,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 359,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 22770,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 23,
+    "cacheRead": 88066,
+    "cacheWrite": 22770,
+    "calls": 4
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "natural",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 94,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:03:05.803Z",
+   "after": "2026-11-17T04:03:43.819Z",
+   "fiveHour": null
+  },
+  "run": 3,
+  "model": "opus",
+  "wallS": 20.056,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.24311600000000003,
+  "apiMs": 15948,
+  "resultTurns": 4,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 8,
+    "outputTokens": 1662,
+    "cacheReadInputTokens": 97380,
+    "cacheCreationInputTokens": 23796,
+    "webSearchRequests": 0,
+    "costUSD": 0.24311600000000003,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 323,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 23796,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 8,
+    "output": 27,
+    "cacheRead": 97380,
+    "cacheWrite": 23796,
+    "calls": 4
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 4,
+  "subCalls": 0,
+  "subagents": [],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:03:46.087Z",
+   "after": "2026-11-17T04:05:09.695Z",
+   "fiveHour": null
+  },
+  "run": 1,
+  "model": "opus",
+  "wallS": 66.781,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 1.2456281999999999,
+  "apiMs": 121478,
+  "resultTurns": 19,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 68,
+    "outputTokens": 12452,
+    "cacheReadInputTokens": 688266,
+    "cacheCreationInputTokens": 152967,
+    "webSearchRequests": 0,
+    "costUSD": 1.2456281999999999,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 1605,
+    "cacheCreationEphemeral5mInputTokens": 121691,
+    "cacheCreationEphemeral1hInputTokens": 31276,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 7,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 7
+   },
+   "started_in_background": 7,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 7,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "Explore": 5,
+    "general-purpose": 2
+   }
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 28,
+    "output": 670,
+    "cacheRead": 443115,
+    "cacheWrite": 31276,
+    "calls": 14
+   },
+   "sub|claude-opus-5-5": {
+    "input": 40,
+    "output": 1075,
+    "cacheRead": 245151,
+    "cacheWrite": 121691,
+    "calls": 20
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 14,
+  "subCalls": 20,
+  "subagents": [
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:05:11.947Z",
+   "after": "2026-11-17T04:21:10.131Z",
+   "fiveHour": null
+  },
+  "run": 1,
+  "model": "opus",
+  "wallS": 69,
+  "exit": 143,
+  "stderr": "",
+  "costUsd": 0.5691926500000001,
+  "apiMs": 97705,
+  "resultTurns": 17,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 24,
+    "outputTokens": 5379,
+    "cacheReadInputTokens": 401743,
+    "cacheCreationInputTokens": 33076,
+    "webSearchRequests": 0,
+    "costUSD": 0.4526326,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 367,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 33076,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-haiku-5-5": {
+    "inputTokens": 26,
+    "outputTokens": 7207,
+    "cacheReadInputTokens": 68705,
+    "cacheCreationInputTokens": 28156,
+    "webSearchRequests": 0,
+    "costUSD": 0.00781265,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 3146,
+    "cacheCreationEphemeral5mInputTokens": 28156,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-haiku-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-sonnet-5-5": {
+    "inputTokens": 12,
+    "outputTokens": 1936,
+    "cacheReadInputTokens": 76134,
+    "cacheCreationInputTokens": 32700,
+    "webSearchRequests": 0,
+    "costUSD": 0.10874740000000001,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 32700,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 7,
+   "requested": {
+    "background": 7,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 7,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 7,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "model-router:scout": 5,
+    "model-router:builder": 2
+   }
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 24,
+    "output": 228,
+    "cacheRead": 401743,
+    "cacheWrite": 33076,
+    "calls": 12
+   },
+   "sub|claude-haiku-5-5": {
+    "input": 26,
+    "output": 144,
+    "cacheRead": 68705,
+    "cacheWrite": 28156,
+    "calls": 13
+   },
+   "sub|claude-sonnet-5-5": {
+    "input": 12,
+    "output": 993,
+    "cacheRead": 76134,
+    "cacheWrite": 32700,
+    "calls": 6
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.94,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 12,
+  "subCalls": 19,
+  "subagents": [
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false,
+  "wallSRaw": 940.169,
+  "idleKilled": true
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:21:12.554Z",
+   "after": "2026-11-17T04:22:42.448Z",
+   "fiveHour": null
+  },
+  "run": 2,
+  "model": "opus",
+  "wallS": 73.098,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 1.3232081999999996,
+  "apiMs": 132472,
+  "resultTurns": 21,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 74,
+    "outputTokens": 13368,
+    "cacheReadInputTokens": 750596,
+    "cacheCreationInputTokens": 161019,
+    "webSearchRequests": 0,
+    "costUSD": 1.3232081999999996,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 1863,
+    "cacheCreationEphemeral5mInputTokens": 127573,
+    "cacheCreationEphemeral1hInputTokens": 33446,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 8,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 8
+   },
+   "started_in_background": 8,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 8,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "Explore": 5,
+    "general-purpose": 3
+   }
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 30,
+    "output": 213,
+    "cacheRead": 490919,
+    "cacheWrite": 33446,
+    "calls": 15
+   },
+   "sub|claude-opus-5-5": {
+    "input": 44,
+    "output": 1021,
+    "cacheRead": 259677,
+    "cacheWrite": 127573,
+    "calls": 22
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.95,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 15,
+  "subCalls": 22,
+  "subagents": [
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:22:44.714Z",
+   "after": "2026-11-17T04:25:58.943Z",
+   "fiveHour": null
+  },
+  "run": 2,
+  "model": "opus",
+  "wallS": 50.9,
+  "exit": 143,
+  "stderr": "",
+  "costUsd": 0.49631604500000004,
+  "apiMs": 92769,
+  "resultTurns": 16,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 22,
+    "outputTokens": 4383,
+    "cacheReadInputTokens": 336087,
+    "cacheCreationInputTokens": 28784,
+    "webSearchRequests": 0,
+    "costUSD": 0.38523739999999995,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 204,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 28784,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-haiku-5-5": {
+    "inputTokens": 34,
+    "outputTokens": 8060,
+    "cacheReadInputTokens": 97642,
+    "cacheCreationInputTokens": 29969,
+    "webSearchRequests": 0,
+    "costUSD": 0.008755945000000001,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 3450,
+    "cacheCreationEphemeral5mInputTokens": 29969,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-haiku-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-sonnet-5-5": {
+    "inputTokens": 12,
+    "outputTokens": 1364,
+    "cacheReadInputTokens": 76412,
+    "cacheCreationInputTokens": 32407,
+    "webSearchRequests": 0,
+    "costUSD": 0.10232269999999999,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 32407,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 7,
+   "requested": {
+    "background": 2,
+    "foreground": 0,
+    "unset": 5
+   },
+   "started_in_background": 7,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 7,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "model-router:scout": 5,
+    "model-router:builder": 2
+   }
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 22,
+    "output": 228,
+    "cacheRead": 336087,
+    "cacheWrite": 28784,
+    "calls": 11
+   },
+   "sub|claude-haiku-5-5": {
+    "input": 34,
+    "output": 142,
+    "cacheRead": 97642,
+    "cacheWrite": 29969,
+    "calls": 17
+   },
+   "sub|claude-sonnet-5-5": {
+    "input": 12,
+    "output": 478,
+    "cacheRead": 76412,
+    "cacheWrite": 32407,
+    "calls": 6
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.95,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 11,
+  "subCalls": 23,
+  "subagents": [
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false,
+  "wallSRaw": 176.559,
+  "idleKilled": true
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "A",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:26:01.085Z",
+   "after": "2026-11-17T04:27:29.994Z",
+   "fiveHour": null
+  },
+  "run": 3,
+  "model": "opus",
+  "wallS": 72.029,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 1.1430851999999998,
+  "apiMs": 116492,
+  "resultTurns": 18,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 64,
+    "outputTokens": 12188,
+    "cacheReadInputTokens": 636246,
+    "cacheCreationInputTokens": 135761,
+    "webSearchRequests": 0,
+    "costUSD": 1.1430851999999998,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 1525,
+    "cacheCreationEphemeral5mInputTokens": 104756,
+    "cacheCreationEphemeral1hInputTokens": 31005,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 7,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 7
+   },
+   "started_in_background": 7,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 7,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "Explore": 5,
+    "general-purpose": 2
+   }
+  },
+  "plugins": [],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "Explore",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   },
+   {
+    "type": "general-purpose",
+    "model": null,
+    "effort": null
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 26,
+    "output": 144,
+    "cacheRead": 404233,
+    "cacheWrite": 31005,
+    "calls": 13
+   },
+   "sub|claude-opus-5-5": {
+    "input": 38,
+    "output": 544,
+    "cacheRead": 232013,
+    "cacheWrite": 104756,
+    "calls": 19
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.95,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 13,
+  "subCalls": 19,
+  "subagents": [
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "general-purpose",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "Explore",
+    "requestedModel": null,
+    "requestedEffort": null,
+    "usedModels": [
+     "claude-opus-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
+ },
+ {
+  "scenario": "delegate",
+  "tag": "v1.1.1-usage",
+  "arm": "B",
+  "usage": {
+   "weeklyBefore": 95,
+   "weeklyAfter": 95,
+   "before": "2026-11-17T04:27:32.237Z",
+   "after": "2026-11-17T04:28:53.067Z",
+   "fiveHour": null
+  },
+  "run": 3,
+  "model": "opus",
+  "wallS": 62.097,
+  "exit": 0,
+  "stderr": "",
+  "costUsd": 0.5109795850000001,
+  "apiMs": 86742,
+  "resultTurns": 16,
+  "subtype": "success",
+  "terminal": "completed",
+  "modelUsage": {
+   "claude-opus-5-5": {
+    "inputTokens": 22,
+    "outputTokens": 4797,
+    "cacheReadInputTokens": 355750,
+    "cacheCreationInputTokens": 31359,
+    "webSearchRequests": 0,
+    "costUSD": 0.41805000000000003,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 191,
+    "cacheCreationEphemeral5mInputTokens": 0,
+    "cacheCreationEphemeral1hInputTokens": 31359,
+    "canonicalModel": "claude-opus-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-haiku-5-5": {
+    "inputTokens": 26,
+    "outputTokens": 6093,
+    "cacheReadInputTokens": 71151,
+    "cacheCreationInputTokens": 22199,
+    "webSearchRequests": 0,
+    "costUSD": 0.006535485,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 2166,
+    "cacheCreationEphemeral5mInputTokens": 22199,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-haiku-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   },
+   "claude-sonnet-5-5": {
+    "inputTokens": 10,
+    "outputTokens": 1663,
+    "cacheReadInputTokens": 63941,
+    "cacheCreationInputTokens": 25340,
+    "webSearchRequests": 0,
+    "costUSD": 0.0863941,
+    "contextWindow": 1000000,
+    "maxOutputTokens": 128000,
+    "thinkingTokens": 0,
+    "cacheCreationEphemeral5mInputTokens": 25340,
+    "cacheCreationEphemeral1hInputTokens": 0,
+    "canonicalModel": "claude-sonnet-5-5",
+    "provider": "firstParty",
+    "costBasis": "list"
+   }
+  },
+  "subagentStats": {
+   "spawned": 7,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 7
+   },
+   "started_in_background": 7,
+   "max_depth": 1,
+   "spawned_by_subagents": 0,
+   "completed": 7,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {
+    "model-router:scout": 5,
+    "model-router:builder": 2
+   }
+  },
+  "plugins": [
+   "model-router"
+  ],
+  "mainModel": "claude-opus-5-5",
+  "agentCalls": [
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:scout",
+    "model": "haiku",
+    "effort": "low"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   },
+   {
+    "type": "model-router:builder",
+    "model": "sonnet",
+    "effort": "medium"
+   }
+  ],
+  "tokens": {
+   "main|claude-opus-5-5": {
+    "input": 22,
+    "output": 188,
+    "cacheRead": 355750,
+    "cacheWrite": 31359,
+    "calls": 11
+   },
+   "sub|claude-haiku-5-5": {
+    "input": 26,
+    "output": 109,
+    "cacheRead": 71151,
+    "cacheWrite": 22199,
+    "calls": 13
+   },
+   "sub|claude-sonnet-5-5": {
+    "input": 10,
+    "output": 817,
+    "cacheRead": 63941,
+    "cacheWrite": 25340,
+    "calls": 5
+   }
+  },
+  "rateLimit": [
+   {
+    "type": "seven_day",
+    "utilization": 0.95,
+    "windows": [
+     "seven_day"
+    ]
+   }
+  ],
+  "mainCalls": 11,
+  "subCalls": 18,
+  "subagents": [
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   },
+   {
+    "type": "model-router:builder",
+    "requestedModel": "sonnet",
+    "requestedEffort": "medium",
+    "usedModels": [
+     "claude-sonnet-5-5"
+    ],
+    "usedEfforts": [
+     "medium"
+    ]
+   },
+   {
+    "type": "model-router:scout",
+    "requestedModel": "haiku",
+    "requestedEffort": "low",
+    "usedModels": [
+     "claude-haiku-5-5"
+    ],
+    "usedEfforts": [
+     "low"
+    ]
+   }
+  ],
+  "passed": true,
+  "testsPass": 45,
+  "testsFail": 0,
+  "testsModified": false
  }
 ]
